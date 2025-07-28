@@ -2,7 +2,7 @@ const axios = require('axios');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./sellvpn.db');
 
-async function renewssh(username, exp, limitip, serverId) {
+async function renew-ssh(username, exp, limitip, serverId) {
   console.log(`Renewing SSH account for ${username} with expiry ${exp} days, limit IP ${limitip} on server ${serverId}`);
   
   // Validasi username
@@ -22,7 +22,7 @@ async function renewssh(username, exp, limitip, serverId) {
 
       const domain = server.domain;
       const auth = server.auth;
-      const param = `:5888/renewssh?user=${username}&exp=${exp}&iplimit=${limitip}&auth=${auth}`;
+      const param = `:5888/renew-ssh?user=${username}&exp=${exp}&iplimit=${limitip}&auth=${auth}`;
       const url = `http://${domain}${param}`;
       axios.get(url)
         .then(response => {
@@ -55,7 +55,7 @@ async function renewssh(username, exp, limitip, serverId) {
     });
   });
 }
-async function renewvmess(username, exp, quota, limitip, serverId) {
+async function renew-vme(username, exp, quota, limitip, serverId) {
     console.log(`Renewing VMess account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip} on server ${serverId}`);
     
     // Validasi username
@@ -75,7 +75,7 @@ async function renewvmess(username, exp, quota, limitip, serverId) {
   
         const domain = server.domain;
         const auth = server.auth;
-        const param = `:5888/renewvmess?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
+        const param = `:5888/renew-vme?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
         const url = `http://${domain}${param}`;
         axios.get(url)
           .then(response => {
@@ -108,7 +108,7 @@ async function renewvmess(username, exp, quota, limitip, serverId) {
       });
     });
   }
-  async function renewvless(username, exp, quota, limitip, serverId) {
+  async function renew-vle(username, exp, quota, limitip, serverId) {
     console.log(`Renewing VLess account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip} on server ${serverId}`);
     
     // Validasi username
@@ -128,7 +128,7 @@ async function renewvmess(username, exp, quota, limitip, serverId) {
   
         const domain = server.domain;
         const auth = server.auth;
-        const param = `:5888/renewvless?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
+        const param = `:5888/renew-vle?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
         const url = `http://${domain}${param}`;
         axios.get(url)
           .then(response => {
@@ -216,7 +216,7 @@ async function renewvmess(username, exp, quota, limitip, serverId) {
       });
     });
   }
-  async function renewshadowsocks(username, exp, quota, limitip, serverId) {
+  async function renew-ssr(username, exp, quota, limitip, serverId) {
     console.log(`Renewing Shadowsocks account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip} on server ${serverId}`);
     
     // Validasi username
@@ -236,7 +236,7 @@ async function renewvmess(username, exp, quota, limitip, serverId) {
   
         const domain = server.domain;
         const auth = server.auth;
-        const param = `:5888/renewshadowsocks?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
+        const param = `:5888/renew-ssr?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
         const url = `http://${domain}${param}`;
         axios.get(url)
           .then(response => {
@@ -271,4 +271,4 @@ async function renewvmess(username, exp, quota, limitip, serverId) {
     });
   }
   
-  module.exports = { renewshadowsocks, renewtrojan, renewvless, renewvmess, renewssh };
+  module.exports = { renew-ssr, renewtrojan, renew-vle, renew-vme, renew-ssh };
