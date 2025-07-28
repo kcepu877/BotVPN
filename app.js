@@ -9,8 +9,8 @@ const axios = require('axios');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const { createssh, createvmess, createvless, createtrojan, createshadowsocks } = require('./modules/create');
-const { renewssh, renewvmess, renewvless, renewtrojan, renewshadowsocks } = require('./modules/renew');
+const { add-ssh, add-vme, add-vle, add-tro, add-ssr } = require('./modules/create');
+const { renew-ssh, renew-vme, renew-vle, renew-tro, renew-ssr } = require('./modules/renew');
 
 const fs = require('fs');
 const vars = JSON.parse(fs.readFileSync('./.vars.json', 'utf8'));
@@ -956,27 +956,27 @@ bot.on('text', async (ctx) => {
           }
           if (action === 'create') {
             if (type === 'vmess') {
-              msg = await createvmess(username, exp, quota, iplimit, serverId);
+              msg = await add-vme(username, exp, quota, iplimit, serverId);
             } else if (type === 'vless') {
-              msg = await createvless(username, exp, quota, iplimit, serverId);
+              msg = await add-vle(username, exp, quota, iplimit, serverId);
             } else if (type === 'trojan') {
-              msg = await createtrojan(username, exp, quota, iplimit, serverId);
+              msg = await add-tro(username, exp, quota, iplimit, serverId);
             } else if (type === 'shadowsocks') {
-              msg = await createshadowsocks(username, exp, quota, iplimit, serverId);
+              msg = await add-ssr(username, exp, quota, iplimit, serverId);
             } else if (type === 'ssh') {
-              msg = await createssh(username, password, exp, iplimit, serverId);
+              msg = await add-ssh(username, password, exp, iplimit, serverId);
             }
           } else if (action === 'renew') {
             if (type === 'vmess') {
-              msg = await renewvmess(username, exp, quota, iplimit, serverId);
+              msg = await renew-vme(username, exp, quota, iplimit, serverId);
             } else if (type === 'vless') {
-              msg = await renewvless(username, exp, quota, iplimit, serverId);
+              msg = await renew-vle(username, exp, quota, iplimit, serverId);
             } else if (type === 'trojan') {
-              msg = await renewtrojan(username, exp, quota, iplimit, serverId);
+              msg = await renew-tro(username, exp, quota, iplimit, serverId);
             } else if (type === 'shadowsocks') {
-              msg = await renewshadowsocks(username, exp, quota, iplimit, serverId);
+              msg = await renew-ssr(username, exp, quota, iplimit, serverId);
             } else if (type === 'ssh') {
-              msg = await renewssh(username, exp, iplimit, serverId);
+              msg = await renew-ssh(username, exp, iplimit, serverId);
             }
           }
           // Kurangi saldo pengguna
