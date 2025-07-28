@@ -88,7 +88,7 @@ Save Account Link: [Save Account](https://${sshData.domain}:81/ssh-${sshData.use
     });
   });
 }
-async function add-vmess(username, exp, quota, limitip, serverId) {
+async function add-vme(username, exp, quota, limitip, serverId) {
   console.log(`Creating VMess account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip} on server ${serverId}`);
   
   // Validasi username
@@ -108,7 +108,7 @@ async function add-vmess(username, exp, quota, limitip, serverId) {
 
       const domain = server.domain;
       const auth = server.auth;
-      const param = `:5888/add-vmess?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
+      const param = `:5888/add-vme?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
       const url = `http://${domain}${param}`;
       axios.get(url)
         .then(response => {
@@ -171,7 +171,7 @@ Save Account Link: [Save Account](https://${vmessData.domain}:81/vmess-${vmessDa
     });
   });
 }
-async function add-vless(username, exp, quota, limitip, serverId) {
+async function add-vle(username, exp, quota, limitip, serverId) {
   console.log(`Creating VLESS account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip} on server ${serverId}`);
   
   // Validasi username
@@ -191,7 +191,7 @@ async function add-vless(username, exp, quota, limitip, serverId) {
 
       const domain = server.domain;
       const auth = server.auth;
-      const param = `:5888/add-vless?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
+      const param = `:5888/add-vle?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
       const url = `http://${domain}${param}`;
       axios.get(url)
         .then(response => {
@@ -253,7 +253,7 @@ Save Account Link: [Save Account](https://${vlessData.domain}:81/vless-${vlessDa
     });
   });
 }
-async function add-tro(username, exp, quota, limitip, serverId) {
+async function createtrojan(username, exp, quota, limitip, serverId) {
   console.log(`Creating Trojan account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip} on server ${serverId}`);
   
   // Validasi username
@@ -273,7 +273,7 @@ async function add-tro(username, exp, quota, limitip, serverId) {
 
       const domain = server.domain;
       const auth = server.auth;
-      const param = `:5888/add-tro?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
+      const param = `:5888/createtrojan?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
       const url = `http://${domain}${param}`;
       axios.get(url)
         .then(response => {
@@ -406,4 +406,4 @@ Save Account Link: [Save Account](https://${shadowsocksData.domain}:81/shadowsoc
   });
 }
 
-module.exports = { add-ssh, add-vmess, add-vless, add-tro, add-ssr }; 
+module.exports = { add-ssh, add-vme, add-vle, createtrojan, add-ssr }; 
