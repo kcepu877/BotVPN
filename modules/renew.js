@@ -162,7 +162,7 @@ async function renew-vme(username, exp, quota, limitip, serverId) {
       });
     });
   }
-  async function renewtrojan(username, exp, quota, limitip, serverId) {
+  async function renew-tro(username, exp, quota, limitip, serverId) {
     console.log(`Renewing Trojan account for ${username} with expiry ${exp} days, quota ${quota} GB, limit IP ${limitip} on server ${serverId}`);
     
     // Validasi username
@@ -182,7 +182,7 @@ async function renew-vme(username, exp, quota, limitip, serverId) {
   
         const domain = server.domain;
         const auth = server.auth;
-        const param = `:5888/renewtrojan?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
+        const param = `:5888/renew-tro?user=${username}&exp=${exp}&quota=${quota}&iplimit=${limitip}&auth=${auth}`;
         const url = `http://${domain}${param}`;
         axios.get(url)
           .then(response => {
@@ -271,4 +271,4 @@ async function renew-vme(username, exp, quota, limitip, serverId) {
     });
   }
   
-  module.exports = { renew-ssr, renewtrojan, renew-vle, renew-vme, renew-ssh };
+  module.exports = { renew-ssr, renew-tro, renew-vle, renew-vme, renew-ssh };
